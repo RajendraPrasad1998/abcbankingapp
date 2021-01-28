@@ -1,0 +1,79 @@
+<p>show-transaction works!</p>
+
+
+    <div>
+        <label for="">filterBy :</label>
+        <select class="custom-select-sm" [(ngModel)]="selectedItem"  (change)="selected()"  >
+           <option value={{item}}  *ngFor="let item of items; index as i;"> {{item}}</option> 
+          
+          </select>
+
+          <div [ngSwitch]="selectedItem">
+            <div *ngSwitchCase="'userId'">
+              <label for="">Enter text</label>
+        <input type="text"[(ngModel)]='userId'   >
+
+        <button class="btn btn-md btn-secondary btn-style" (click)="getlist(userId)" >Get Transactions</button>
+            </div>
+        </div>
+
+
+        <div [ngSwitch]="selectedItem">
+            <div *ngSwitchCase="'date'">
+              <label for="">start Date</label>
+        <input type="date"[(ngModel)]='sd'   >
+                {{sd}}
+
+        <label for="">End Date</label>
+        <input type="date"[(ngModel)]='ed'   >
+
+        {{ed}}
+
+        <button class="btn btn-md btn-secondary btn-style" (click)="getBydate(sd,ed)" >Get Transactions</button>
+            </div>
+        </div>
+        </div>
+    
+
+        
+
+<table class="table table-striped"   *ngIf="trasactionlist">
+    <thead>
+      <tr>
+          
+        <th>Transactionid</th>
+        <th>userId</th>
+        <th>ammount</th>
+        <th>toName</th>
+        <th>toMailId</th>
+        <th>date</th>
+        <th>balance</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let t of trasactionlist; let i = index">
+      <tr>
+       
+        <td>{{t.tId}}</td>
+        <td>{{t.userId}}</td>
+        <td>{{t.ammount}}</td>
+        <td>{{t.toName}}</td>
+        <td>{{t.toMailId}}</td>
+        <td>{{t.date}}</td>
+        <td>{{t.balance}}</td>
+       
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  
+
+
+    <div>
+
+        <button class="btn btn-md btn-secondary btn-style" (click)="getTransactions()" >Get Transactions</button> 
+
+    </div>
+
+

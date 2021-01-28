@@ -1,0 +1,99 @@
+<h2 class="container">SignUp form</h2>  
+  
+<form   class="container"  [formGroup]="form" #userInformation (ngSubmit)="updateUser()">  
+  
+  <div class="row">  
+    <div class=" col-md-offset-1 col-md-4">  
+        <label for="fullName"> Name </label>  
+        <input formControlName="fullName" class="form-control" type="text">   
+    </div>  
+  </div>  
+  
+  <div class="row">  
+    <div class=" col-md-offset-1 col-md-4">  
+        <label for="email"> Email </label>  
+        <input formControlName="email" class="form-control" type="text">   
+    </div>  
+  </div>  
+  
+  <div class="row">  
+    <div class=" col-md-offset-1 col-md-4">  
+        <label for="password"> Password </label>  
+        <input formControlName="password" class="form-control" type="password">   
+    </div>  
+  </div>  
+  
+  <div class="row">  
+    <div class=" col-md-offset-1 col-md-4">  
+        <label for="confirmPassword"> Confirm Password </label>  
+        <input formControlName="confirmPassword" class="form-control" type="password">   
+    </div>  
+  </div>  
+  
+ 
+  
+  <div class="row" style="margin-top: 40px;">  
+    <div class="col-md-offset-1 col-md-4">  
+        <button class="btn btn-md btn-primary btn-style" [disabled]="form.invalid" >Register</button>  
+    </div>  
+  </div> 
+  
+ 
+  
+</form>  
+
+<div>         
+    
+  <button class="btn btn-md btn-secondary btn-style" (click)="updateUser()" >FetchUsers</button> 
+
+</div>
+
+<!-- <div class="row">
+  <div class="col-xs-12">
+    <app-show-user
+      *ngFor="let recipeEl of use; let i = index"
+      [user]="recipeEl"
+      [i]="i"></app-show-user>
+  </div>
+</div> -->
+
+
+
+<table class="table table-striped"  *ngIf="use" >
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let user of use; let i = index">
+    <tr>
+      <td>{{user.emailId}}</td>
+      <td>{{user.name}}</td>
+     
+    </tr>
+  
+  </tbody>
+</table>
+
+
+<div>
+
+sender  <input [(ngModel)]="email1" type="email" class="form-control" name="email" placeholder="Enter Email" 
+  email required>
+  recevier
+  <input [(ngModel)]="email2" type="email" class="form-control" name="email" placeholder="Enter Email" 
+  email required>
+Ammount
+  <input [(ngModel)]="ammount" type="number" class="form-control" name="email" placeholder="Enter Email" 
+  email required>
+  <button class="btn btn-md btn-secondary btn-style" (click)="transac(email1,email2,ammount)" >transact</button> 
+
+
+</div>
+
+
+<div class="container">
+
+  <show-transaction></show-transaction>
+</div>
